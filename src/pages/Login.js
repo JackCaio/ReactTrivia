@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import ConfigButton from '../components/ConfigButton';
 import getToken from '../services/tokenApi';
+import './Login.css';
 
 class Login extends Component {
   constructor() {
@@ -39,20 +40,20 @@ class Login extends Component {
     const { name, email } = this.state;
     const { history } = this.props;
     return (
-      <div>
+      <div className="login-container">
         <input
           type="text"
           data-testid="input-player-name"
           name="name"
           value={ name }
-          placeholder="nome"
+          placeholder="Qual é o seu nome?"
           onChange={ this.onInputChange }
         />
         <input
           type="text"
           data-testid="input-gravatar-email"
           name="email"
-          placeholder="email "
+          placeholder="Qual é o seu e-mail do gravatar?"
           value={ email }
           onChange={ this.onInputChange }
 

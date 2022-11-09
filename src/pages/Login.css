@@ -1,0 +1,35 @@
+.login-container {
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 1px 4px 13px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-flow: column wrap;
+  height: 300px;
+  justify-content: space-around;
+  margin: 0 auto;
+  padding: 15px 0;
+  width: 614px;
+}
+
+.login-container input {
+  height: 45px;
+  width: 519px;
+}
+
+.login-container button {
+  background-color: #2fc18c;
+  border-radius: 5px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  height: 45px;
+  width: 519px;
+}
+
+.login-container button:disabled {
+  color: #444955;
+  cursor: default;
+}
