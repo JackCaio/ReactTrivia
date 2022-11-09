@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import ConfigButton from '../components/ConfigButton';
+import getToken from '../services/tokenApi';
 
 class Login extends Component {
   constructor() {
@@ -24,6 +25,14 @@ class Login extends Component {
     this.setState({
       [name]: value,
     });
+  };
+
+  startGame = async () => {
+    const { history } = this.props;
+    const token = await getToken();
+    console.log(token);
+    localStorage.setItem('token', token);
+    history.push('/game');
   };
 
   render() {
@@ -52,6 +61,7 @@ class Login extends Component {
           data-testid="btn-play"
           type="button"
           disabled={ !this.buttonEnable() }
+          onClick={ this.startGame }
         >
           Play
         </button>
