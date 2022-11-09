@@ -60,12 +60,16 @@ describe('Testes relacionados á página de login', () => {
     expect(history.location.pathname).toBe('/configs');
   });
   test('Verifica se o botão de play redireciona para a página correta', async () => {
+    jest.spyOn(global, 'fetch');
+global.fetch.mockResolvedValue({
+  json: jest.fn().mockResolvedValue({token: '123456abcde'}),
+});
     const { history } = renderWithRouterAndRedux(<App />);
     preencheDados(defaultName, defaultEmail);
 
     const btnPlay = screen.getByTestId(dataTestPlay);
     userEvent.click(btnPlay);
-    
+
     await waitFor(() => expect(history.location.pathname).toBe('/game'), 1000)
   });
 });
