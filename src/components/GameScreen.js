@@ -93,7 +93,6 @@ class GameScreen extends Component {
             );
           })}
         </div>
-        {/* <Question question={ questions[number] } /> */}
         {selectedAnswer && (
           <button
             type="button"
