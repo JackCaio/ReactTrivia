@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import md5 from 'crypto-js/md5';
 import { connect } from 'react-redux';
 
 class Header extends Component {
@@ -11,7 +12,8 @@ class Header extends Component {
   }
 
   componentDidMount() {
-    const img = JSON.parse(localStorage.getItem('ranking')).picture;
+    const { email } = this.props;
+    const img = md5(email).toString();
     this.setState({
       img,
     });
@@ -39,11 +41,13 @@ class Header extends Component {
 Header.propTypes = {
   name: PropTypes.string.isRequired,
   score: PropTypes.number.isRequired,
+  email: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   name: state.player.name,
   score: state.player.score,
+  email: state.player.gravatarEmail,
 });
 
 export default connect(mapStateToProps)(Header);
