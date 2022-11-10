@@ -24,8 +24,14 @@ class GameScreen extends Component {
       localStorage.removeItem('token');
       history.push('/');
     }
+    const questions = data.results.map((question) => {
+      const answers = this
+        .randomizeQuestions(question.correct_answer, ...question.incorrect_answers);
+      const obj = { ...question, answers };
+      return obj;
+    });
     this.setState({
-      questions: data.results,
+      questions,
       loading: false,
     });
   }
@@ -54,11 +60,8 @@ class GameScreen extends Component {
     if (loading) {
       return (<div>...Loading</div>);
     }
-    const respostas = this.randomizeQuestions(
-      questions[number].correct_answer,
-      ...questions[number].incorrect_answers,
+    const respostas = questions[number].answers;
 
-    );
     return (
       <div>
         <Timer />
