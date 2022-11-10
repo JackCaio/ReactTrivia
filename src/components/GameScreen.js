@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Timer from './Timer';
 
 class GameScreen extends Component {
   constructor() {
@@ -9,6 +10,7 @@ class GameScreen extends Component {
       number: 0,
       loading: true,
       selectedAnswer: false,
+      timerRunning: false,
     };
   }
 
@@ -32,6 +34,7 @@ class GameScreen extends Component {
     this.setState({
       questions,
       loading: false,
+      timerRunning: true,
     });
   }
 
@@ -54,8 +57,10 @@ class GameScreen extends Component {
     this.setState({ selectedAnswer: true });
   };
 
+  timeOut = () => this.setState({ timerRunning: false, selectedAnswer: true });
+
   render() {
-    const { questions, number, loading, selectedAnswer } = this.state;
+    const { questions, number, loading, selectedAnswer, timerRunning } = this.state;
     if (loading) {
       return (<div>...Loading</div>);
     }
@@ -63,6 +68,12 @@ class GameScreen extends Component {
 
     return (
       <div>
+        {
+          timerRunning
+            ? <Timer timeOut={ this.timeOut } />
+            : <p>Tempo Esgotado!</p>
+
+        }
         <p
           data-testid="question-category"
         >
@@ -87,6 +98,7 @@ class GameScreen extends Component {
                 type="button"
                 data-testid={ testId }
                 onClick={ this.selectAnswer }
+                disabled={ !timerRunning }
               >
                 {question}
               </button>
@@ -98,7 +110,11 @@ class GameScreen extends Component {
             type="button"
             data-testid="btn-next"
             onClick={ () => {
-              this.setState({ number: number + 1, selectedAnswer: false });
+              this.setState({
+                number: number + 1,
+                selectedAnswer: false,
+                timerRunning: true,
+              });
             } }
           >
             Next
