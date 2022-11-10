@@ -87,6 +87,7 @@ class GameScreen extends Component {
 
   render() {
     const { questions, number, loading, selectedAnswer, timerRunning } = this.state;
+    const { history } = this.props;
     if (loading) {
       return (<div>...Loading</div>);
     }
@@ -136,6 +137,11 @@ class GameScreen extends Component {
             type="button"
             data-testid="btn-next"
             onClick={ () => {
+              const lastQuestion = 4;
+              if (number === lastQuestion) {
+                return history.push('/feedback');
+              }
+
               this.setState({
                 number: number + 1,
                 selectedAnswer: false,
