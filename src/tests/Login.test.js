@@ -18,6 +18,7 @@ const preencheDados = (nome, email) => {
 }
 
 describe('Testes relacionados á página de login', () => {
+
   test('Verifica se a aplicação renderiza o componente certo quando iniciado', () => {
     renderWithRouterAndRedux(<App />);
 
@@ -62,7 +63,17 @@ describe('Testes relacionados á página de login', () => {
   test('Verifica se o botão de play redireciona para a página correta', async () => {
     jest.spyOn(global, 'fetch');
 global.fetch.mockResolvedValue({
-  json: jest.fn().mockResolvedValue({token: '123456abcde'}),
+  json: jest.fn().mockResolvedValue({token: '123456abcde', results:[
+    {
+      "category": "Geography",
+      "type": "boolean",
+      "difficulty": "easy",
+      "question": "The Republic of Malta is the smallest microstate worldwide.",
+      "correct_answer": "False",
+      "incorrect_answers": [
+        "True"
+      ]
+    },]}),
 });
     const { history } = renderWithRouterAndRedux(<App />);
     preencheDados(defaultName, defaultEmail);
