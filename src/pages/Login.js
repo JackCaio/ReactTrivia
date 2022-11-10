@@ -38,7 +38,11 @@ class Login extends Component {
     localStorage.setItem('token', token);
     const hash = md5(email).toString();
     const obj = { name, score: 0, picture: hash };
-    localStorage.setItem('ranking', JSON.stringify(obj));
+    let oldRanking = [];
+    if (localStorage.getItem('ranking') !== null) {
+      oldRanking = JSON.parse(localStorage.getItem('ranking'));
+    }
+    localStorage.setItem('ranking', JSON.stringify([...oldRanking, obj]));
     dispatch(addUsuario(name, email));
     history.push('/game');
   };
