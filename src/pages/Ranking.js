@@ -1,14 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-// Ajustar ao final
-const rankingsMock = [
-  { name: 'player1', score: 100, picture: '4675ee57486c6ab9507d64d763ffd4f3' },
-  { name: 'player2', score: 40, picture: '4675ee57486c6ab9507d64d763ffd4f3' },
-  { name: 'player3', score: 80, picture: '4675ee57486c6ab9507d64d763ffd4f3' },
-  { name: 'player4', score: 50, picture: '4675ee57486c6ab9507d64d763ffd4f3' },
-];
-
 class Ranking extends React.Component {
   constructor() {
     super();
@@ -19,8 +11,8 @@ class Ranking extends React.Component {
   }
 
   componentDidMount() {
-    // const storedRanking = JSON.parse(localStorage.getItem('ranking'));
-    const ranking = rankingsMock.sort((a, b) => b.score - a.score);
+    const storedRanking = JSON.parse(localStorage.getItem('ranking'));
+    const ranking = storedRanking.sort((a, b) => b.score - a.score);
     this.setState({ ranking });
   }
 
