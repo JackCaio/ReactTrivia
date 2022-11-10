@@ -8,6 +8,7 @@ class GameScreen extends Component {
       questions: [],
       number: 0,
       loading: true,
+      selectedAnswer: false,
     };
   }
 
@@ -17,7 +18,6 @@ class GameScreen extends Component {
     const URL = `https://opentdb.com/api.php?amount=5&token=${token}`;
     const response = await fetch(URL);
     const data = await response.json();
-    console.log(data);
     const errorCode = 3;
     if (data.response_code === errorCode) {
       localStorage.removeItem('token');
@@ -44,9 +44,12 @@ class GameScreen extends Component {
     return result;
   };
 
+  selectAnswer = () => {
+    this.setState({ selectedAnswer: true });
+  };
+
   render() {
-    const { questions, number, loading } = this.state;
-    console.log(questions);
+    const { questions, number, loading, selectedAnswer } = this.state;
     if (loading) {
       return (<div>...Loading</div>);
     }
@@ -68,17 +71,36 @@ class GameScreen extends Component {
           {questions[number].question}
         </p>
         <div data-testid="answer-options">
-          {respostas.map(({ testId, question }, i) => (
-            <button
-              key={ `Q${i}` }
-              type="button"
-              data-testid={ testId }
-              onClick={ () => {} }
-            >
-              {question}
-            </button>
-          ))}
+          {respostas.map(({ testId, question }, i) => {
+            let style = {};
+            if (selectedAnswer) {
+              const color = testId.includes('correct') ? 'rgb(6, 240, 15)' : 'red';
+              style = { border: `3px solid ${color}` };
+            }
+            return (
+              <button
+                style={ style }
+                key={ `Q${i}` }
+                type="button"
+                data-testid={ testId }
+                onClick={ this.selectAnswer }
+              >
+                {question}
+              </button>
+            );
+          })}
         </div>
+        {selectedAnswer && (
+          <button
+            type="button"
+            data-testid="btn-next"
+            onClick={ () => {
+              this.setState({ number: number + 1, selectedAnswer: false });
+            } }
+          >
+            Next
+          </button>
+        )}
       </div>
     );
   }
