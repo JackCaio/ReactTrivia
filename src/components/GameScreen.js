@@ -90,6 +90,17 @@ class GameScreen extends Component {
             );
           })}
         </div>
+        {selectedAnswer && (
+          <button
+            type="button"
+            data-testid="btn-next"
+            onClick={ () => {
+              this.setState({ number: number + 1, selectedAnswer: false });
+            } }
+          >
+            Next
+          </button>
+        )}
       </div>
     );
   }
