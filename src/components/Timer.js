@@ -1,5 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { timerDown } from '../redux/actions';
 
 class Timer extends React.Component {
   constructor() {
@@ -22,10 +24,11 @@ class Timer extends React.Component {
 
   runTimer = () => {
     const ONE_SECOND = 1000;
-    const { timeOut } = this.props;
+    const { timeOut, dispatch } = this.props;
     const timer = window.setInterval(() => {
       const { countdown } = this.state;
-      if (countdown > 0) {
+      if (countdown > 1) {
+        dispatch(timerDown());
         this.setState((prev) => ({ countdown: prev.countdown - 1 }));
       } else {
         timeOut();
@@ -46,6 +49,7 @@ class Timer extends React.Component {
 
 Timer.propTypes = {
   timeOut: propTypes.func.isRequired,
+  dispatch: propTypes.func.isRequired,
 };
 
-export default Timer;
+export default connect()(Timer);

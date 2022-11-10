@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Timer from './Timer';
+import { addPoints } from '../redux/actions';
 
 class GameScreen extends Component {
   constructor() {
@@ -53,8 +55,32 @@ class GameScreen extends Component {
     return result;
   };
 
-  selectAnswer = () => {
+  selectAnswer = (answer) => {
+    this.timeOut();
+    if (answer.includes('correct')) { this.calcPontos(); }
     this.setState({ selectedAnswer: true });
+  };
+
+  calcPontos = () => {
+    const { questions, number } = this.state;
+    const { timer, dispatch } = this.props;
+    let pontos = 0;
+    const hardMulti = 3;
+    const mediumMulti = 2;
+    switch (questions[number].difficulty) {
+    case 'easy':
+      pontos = timer;
+      break;
+    case 'medium':
+      pontos = timer * mediumMulti;
+      break;
+    case 'hard':
+      pontos = timer * hardMulti;
+      break;
+    default:
+      break;
+    }
+    dispatch(addPoints(pontos));
   };
 
   timeOut = () => this.setState({ timerRunning: false, selectedAnswer: true });
@@ -98,7 +124,7 @@ class GameScreen extends Component {
                 key={ `Q${i}` }
                 type="button"
                 data-testid={ testId }
-                onClick={ this.selectAnswer }
+                onClick={ () => this.selectAnswer(testId) }
                 disabled={ !timerRunning }
               >
                 {question}
@@ -135,6 +161,12 @@ GameScreen.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,
+  timer: PropTypes.number.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
-export default GameScreen;
+const mapStateToProps = (state) => ({
+  timer: state.timerReducer.timer,
+});
+
+export default connect(mapStateToProps)(GameScreen);
