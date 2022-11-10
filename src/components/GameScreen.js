@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Timer from './Timer';
 
 class GameScreen extends Component {
   constructor() {
@@ -60,6 +61,7 @@ class GameScreen extends Component {
     );
     return (
       <div>
+        <Timer />
         <p
           data-testid="question-category"
         >
