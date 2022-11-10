@@ -18,7 +18,6 @@ class GameScreen extends Component {
     const URL = `https://opentdb.com/api.php?amount=5&token=${token}`;
     const response = await fetch(URL);
     const data = await response.json();
-    console.log(data);
     const errorCode = 3;
     if (data.response_code === errorCode) {
       localStorage.removeItem('token');
@@ -51,7 +50,6 @@ class GameScreen extends Component {
 
   render() {
     const { questions, number, loading, selectedAnswer } = this.state;
-    console.log(questions);
     if (loading) {
       return (<div>...Loading</div>);
     }

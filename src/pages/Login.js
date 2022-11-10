@@ -35,7 +35,6 @@ class Login extends Component {
     const { email, name } = this.state;
     const { history, dispatch } = this.props;
     const token = await getToken();
-    console.log(token);
     localStorage.setItem('token', token);
     const hash = md5(email).toString();
     const obj = { name, score: 0, picture: hash };
