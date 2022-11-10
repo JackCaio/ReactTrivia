@@ -8,6 +8,7 @@ class GameScreen extends Component {
       questions: [],
       number: 0,
       loading: true,
+      selectedAnswer: false,
     };
   }
 
@@ -44,8 +45,12 @@ class GameScreen extends Component {
     return result;
   };
 
+  selectAnswer = () => {
+    this.setState({ selectedAnswer: true });
+  };
+
   render() {
-    const { questions, number, loading } = this.state;
+    const { questions, number, loading, selectedAnswer } = this.state;
     console.log(questions);
     if (loading) {
       return (<div>...Loading</div>);
@@ -68,16 +73,24 @@ class GameScreen extends Component {
           {questions[number].question}
         </p>
         <div data-testid="answer-options">
-          {respostas.map(({ testId, question }, i) => (
-            <button
-              key={ `Q${i}` }
-              type="button"
-              data-testid={ testId }
-              onClick={ () => {} }
-            >
-              {question}
-            </button>
-          ))}
+          {respostas.map(({ testId, question }, i) => {
+            let style = {};
+            if (selectedAnswer) {
+              const color = testId.includes('correct') ? 'rgb(6, 240, 15)' : 'red';
+              style = { border: `3px solid ${color}` };
+            }
+            return (
+              <button
+                style={ style }
+                key={ `Q${i}` }
+                type="button"
+                data-testid={ testId }
+                onClick={ this.selectAnswer }
+              >
+                {question}
+              </button>
+            );
+          })}
         </div>
       </div>
     );
