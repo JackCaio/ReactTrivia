@@ -12,7 +12,10 @@ function player(state = initialState, action) {
   case ADD_USUARIO:
     return { ...state, name: action.name, gravatarEmail: action.email };
   case ADD_POINTS:
-    return { ...state, score: state.score + action.points };
+    return { ...state,
+      score: state.score + action.points,
+      assertions: state.assertions + 1,
+    };
   default:
     return state;
   }
