@@ -1,4 +1,4 @@
-import { ADD_USUARIO } from '../actions';
+import { ADD_POINTS, ADD_USUARIO } from '../actions';
 
 const initialState = {
   name: '',
@@ -11,6 +11,8 @@ function player(state = initialState, action) {
   switch (action.type) {
   case ADD_USUARIO:
     return { ...state, name: action.name, gravatarEmail: action.email };
+  case ADD_POINTS:
+    return { ...state, score: state.score + action.points };
   default:
     return state;
   }
