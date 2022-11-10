@@ -4,3 +4,14 @@ export const addUsuario = (name, email) => ({
   name,
   email,
 });
+
+export const TIMER_DOWN = 'TIMER_DOWN';
+export const timerDown = () => ({
+  type: TIMER_DOWN,
+});
+
+export const ADD_POINTS = 'ADD_POINTS';
+export const addPoints = (points) => ({
+  type: ADD_POINTS,
+  points,
+});
