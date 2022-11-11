@@ -5,13 +5,29 @@ import Header from '../components/Header';
 import { playAgain } from '../redux/actions';
 
 class Feedback extends Component {
+  sendResultsToLocalStorage = () => {
+    const { name, score } = this.props;
+    const oldRanking = JSON.parse(localStorage.getItem('ranking'));
+    const playerObj = oldRanking.find((player) => player.name === name);
+    playerObj.score = score;
+    const newRanking = [
+      ...oldRanking.filter((player) => player.name !== name),
+      playerObj,
+    ];
+    localStorage.setItem('ranking', JSON.stringify(newRanking));
+  };
+
   newGame = () => {
+    this.sendResultsToLocalStorage();
+
     const { history, dispatch } = this.props;
     dispatch(playAgain());
     history.push('/');
   };
 
   seeRanking = () => {
+    this.sendResultsToLocalStorage();
+
     const { history, dispatch } = this.props;
     dispatch(playAgain());
     history.push('/ranking');
@@ -50,10 +66,14 @@ class Feedback extends Component {
 
 const mapStateToProps = (state) => ({
   assertions: state.player.assertions,
+  name: state.player.name,
+  score: state.player.score,
 });
 
 Feedback.propTypes = {
   assertions: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,
