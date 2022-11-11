@@ -20,3 +20,8 @@ export const RESET_TIMER = 'RESET_TIMER';
 export const resetTimer = () => ({
   type: RESET_TIMER,
 });
+
+export const PLAY_AGAIN = 'PLAY_AGAIN';
+export const playAgain = () => ({
+  type: PLAY_AGAIN,
+});

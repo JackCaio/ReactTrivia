@@ -1,4 +1,4 @@
-import { TIMER_DOWN, RESET_TIMER } from '../actions';
+import { TIMER_DOWN, RESET_TIMER, PLAY_AGAIN } from '../actions';
 
 const initialState = {
   timer: 30,
@@ -17,6 +17,9 @@ function timerReducer(state = initialState, action) {
       ...state,
       timer: initialState.timer,
     };
+
+  case PLAY_AGAIN:
+    return { ...initialState };
 
   default:
     return state;
