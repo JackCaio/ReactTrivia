@@ -5,16 +5,24 @@ import Header from '../components/Header';
 
 class Feedback extends Component {
   render() {
-    const { assertions } = this.props;
+    const { assertions, history } = this.props;
     const acertosMinimos = 3;
     return (
       <div>
         <Header />
+        <br />
         <p data-testid="feedback-text">
           {
             assertions < acertosMinimos ? 'Could be better...' : 'Well Done!'
           }
         </p>
+        <button
+          data-testid="btn-play-again"
+          type="button"
+          onClick={ () => history.push('/') }
+        >
+          Play Again
+        </button>
       </div>
     );
   }
@@ -26,6 +34,9 @@ const mapStateToProps = (state) => ({
 
 Feedback.propTypes = {
   assertions: PropTypes.number.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
 };
 
 export default connect(mapStateToProps)(Feedback);
