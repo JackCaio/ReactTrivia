@@ -35,10 +35,10 @@ class Header extends Component {
           <span>
             {'Score: '}
             <span data-testid="header-score">{score}</span>
-            <p>Seu score foi de:</p>
-            <h2 data-testid="feedback-total-score">{score}</h2>
-            <p>O número de perguntas corretas foi de:</p>
-            <h4 data-testid="feedback-total-question">{assertions}</h4>
+            <span>Seu score foi de:</span>
+            <span data-testid="feedback-total-score">{score}</span>
+            <span>O número de perguntas corretas foi de:</span>
+            <span data-testid="feedback-total-question">{assertions}</span>
           </span>
         </p>
       </header>
