@@ -2,7 +2,7 @@ header {
   align-items: center;
   background-color: white;
   display: flex;
-  flex-flow: left;
+  flex-flow: row wrap;
   height: 113px;
   justify-content: space-evenly;
   right: 0;
