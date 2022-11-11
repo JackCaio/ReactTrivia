@@ -15,3 +15,8 @@ export const addPoints = (points) => ({
   type: ADD_POINTS,
   points,
 });
+
+export const RESET_TIMER = 'RESET_TIMER';
+export const resetTimer = () => ({
+  type: RESET_TIMER,
+});

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Timer from './Timer';
-import { addPoints } from '../redux/actions';
+import { addPoints, resetTimer } from '../redux/actions';
 
 class GameScreen extends Component {
   constructor() {
@@ -85,9 +85,23 @@ class GameScreen extends Component {
 
   timeOut = () => this.setState({ timerRunning: false, selectedAnswer: true });
 
+  nextQuestion = () => {
+    const { history, dispatch } = this.props;
+    const { number } = this.state;
+    const lastQuestion = 4;
+    if (number === lastQuestion) {
+      return history.push('/feedback');
+    }
+    dispatch(resetTimer());
+    this.setState({
+      number: number + 1,
+      selectedAnswer: false,
+      timerRunning: true,
+    });
+  };
+
   render() {
     const { questions, number, loading, selectedAnswer, timerRunning } = this.state;
-    const { history } = this.props;
     if (loading) {
       return (<div>...Loading</div>);
     }
@@ -136,18 +150,7 @@ class GameScreen extends Component {
           <button
             type="button"
             data-testid="btn-next"
-            onClick={ () => {
-              const lastQuestion = 4;
-              if (number === lastQuestion) {
-                return history.push('/feedback');
-              }
-
-              this.setState({
-                number: number + 1,
-                selectedAnswer: false,
-                timerRunning: true,
-              });
-            } }
+            onClick={ this.nextQuestion }
           >
             Next
           </button>
