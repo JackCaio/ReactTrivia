@@ -69,15 +69,17 @@ class Login extends Component {
           onChange={ this.onInputChange }
 
         />
-        <button
-          data-testid="btn-play"
-          type="button"
-          disabled={ !this.buttonEnable() }
-          onClick={ this.startGame }
-        >
-          Play
-        </button>
-        <ConfigButton history={ history } />
+        <div className="button-container">
+          <button
+            data-testid="btn-play"
+            type="button"
+            disabled={ !this.buttonEnable() }
+            onClick={ this.startGame }
+          >
+            Play
+          </button>
+          <ConfigButton history={ history } />
+        </div>
       </div>
     );
   }
