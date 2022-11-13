@@ -47,6 +47,11 @@
   padding: 2px 1.3em;
   position: absolute;
   transform: translateX(-50%);
+  transition: padding 1s;
+}
+
+.btn-next:hover {
+  padding: 2px 1.5em;
 }
 
 .timer p {
