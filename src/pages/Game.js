@@ -9,7 +9,9 @@ class Game extends Component {
     return (
       <div>
         <Header />
-        <GameScreen history={ history } />
+        <div className="game-container">
+          <GameScreen history={ history } />
+        </div>
       </div>
     );
   }

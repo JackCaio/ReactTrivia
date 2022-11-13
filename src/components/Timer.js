@@ -39,11 +39,7 @@ class Timer extends React.Component {
 
   render() {
     const { countdown } = this.state;
-    return (
-      <div>
-        <span>{ countdown }</span>
-      </div>
-    );
+    return <p>{ countdown }</p>;
   }
 }
 
