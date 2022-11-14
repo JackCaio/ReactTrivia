@@ -34,12 +34,16 @@ class Feedback extends Component {
   };
 
   render() {
-    const { assertions } = this.props;
+    const { assertions, score } = this.props;
     const acertosMinimos = 3;
     return (
       <div>
         <Header />
         <br />
+        <p>
+          {'Seu score foi de: '}
+          <span data-testid="feedback-total-score">{score}</span>
+        </p>
         <p data-testid="feedback-text">
           {
             assertions < acertosMinimos ? 'Could be better...' : 'Well Done!'
