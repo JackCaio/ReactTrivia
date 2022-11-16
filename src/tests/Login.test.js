@@ -1,4 +1,4 @@
-import renderWithRouterAndRedux from "./helpers/renderWithRouterAndRedux";
+import { renderWithRouterAndRedux, preencheDados} from "./helpers/renderWithRouterAndRedux";
 import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
@@ -8,14 +8,6 @@ const dataTestEmail = "input-gravatar-email"
 const dataTestPlay = "btn-play"
 const defaultName = 'nome genérico'
 const defaultEmail = 'teste@teste.com'
-
-const preencheDados = (nome, email) => {
-  const inputName = screen.getByTestId(dataTestName);
-  const inputEmail = screen.getByTestId(dataTestEmail);
-
-  userEvent.type(inputName, nome);
-  userEvent.type(inputEmail, email);
-}
 
 describe('Testes relacionados á página de login', () => {
 
@@ -62,8 +54,8 @@ describe('Testes relacionados á página de login', () => {
   });
   test('Verifica se o botão de play redireciona para a página correta', async () => {
     jest.spyOn(global, 'fetch');
-global.fetch.mockResolvedValue({
-  json: jest.fn().mockResolvedValue({token: '123456abcde', results:[
+    global.fetch.mockResolvedValue({
+      json: jest.fn().mockResolvedValue({token: '123456abcde', results:[
     {
       "category": "Geography",
       "type": "boolean",
