@@ -1,7 +1,23 @@
-body {
+* {
   box-sizing: border-box;
+}
+
+body {
+
+  /* background: #3a1a76; */
+  background: linear-gradient(0deg, black 0%, #3a1a76 70%);
+  box-sizing: border-box;
+  height: 100vh;
   margin: 0;
   padding: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
 }
 
 .App {
@@ -60,4 +76,13 @@ body {
   40%, 60% {
     transform: translate3d(4px, 0, 0);
   }
+}
+
+.trivia-logo {
+  left: 50%;
+  max-width: 250px;
+  position: absolute;
+  top: 20%;
+  transform: translate(-50%, -50%);
+  width: 15%;
 }

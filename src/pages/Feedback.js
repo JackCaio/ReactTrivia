@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
 import { playAgain } from '../redux/actions';
+import './Feedback.css';
 
 class Feedback extends Component {
   sendResultsToLocalStorage = () => {
@@ -34,31 +35,43 @@ class Feedback extends Component {
   };
 
   render() {
-    const { assertions } = this.props;
+    const { assertions, score } = this.props;
     const acertosMinimos = 3;
     return (
       <div>
         <Header />
-        <br />
-        <p data-testid="feedback-text">
-          {
-            assertions < acertosMinimos ? 'Could be better...' : 'Well Done!'
-          }
-        </p>
-        <button
-          data-testid="btn-play-again"
-          type="button"
-          onClick={ this.newGame }
-        >
-          Play Again
-        </button>
-        <button
-          type="button"
-          data-testid="btn-ranking"
-          onClick={ this.seeRanking }
-        >
-          Ranking
-        </button>
+        <section className="feedback-container">
+          <p>
+            {'Seu score foi de: '}
+            <span data-testid="feedback-total-score">{score}</span>
+          </p>
+          <h2
+            data-testid="feedback-text"
+            className={
+              assertions < acertosMinimos ? 'bad-result' : 'good-result'
+            }
+          >
+            {
+              assertions < acertosMinimos ? 'Could be better...' : 'Well Done!'
+            }
+          </h2>
+        </section>
+        <section className="buttons-container">
+          <button
+            data-testid="btn-play-again"
+            type="button"
+            onClick={ this.newGame }
+          >
+            Play Again
+          </button>
+          <button
+            type="button"
+            data-testid="btn-ranking"
+            onClick={ this.seeRanking }
+          >
+            Ranking
+          </button>
+        </section>
       </div>
     );
   }
