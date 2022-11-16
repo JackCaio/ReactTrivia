@@ -1,23 +1,41 @@
 header {
   align-items: center;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.7);
   display: flex;
-  flex-flow: row wrap;
-  height: 113px;
-  justify-content: space-evenly;
-  right: 0;
+  gap: 5%;
+  justify-content: flex-end;
+  padding: 10px 20px;
   width: 100vw;
 }
 
 header img {
-  border-radius: 35px;
-  height: 70px;
-  margin-right: 15px;
-  width: 70px;
+  border-radius: 50%;
+  width: 2rem;
 }
 
-header span {
-  align-self: center;
-  font-weight: 600;
-  margin-right: 15px;
+header * {
+  font-weight: 700;
+  margin: 0;
+}
+
+header > div {
+  align-items: center;
+  display: flex;
+}
+
+.player-name {
+  font-size: 1.5em;
+  margin-left: 5px;
+}
+
+.game-data {
+  margin-left: 5px;
+}
+
+.game-data > p {
+  width: max-content;
+}
+
+.starIcon {
+  margin-left: 5%;
 }

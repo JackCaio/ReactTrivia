@@ -1,0 +1,80 @@
+.game-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+.game-question {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5em 10px;
+  width: 40%;
+}
+
+.game-category {
+  border-radius: 1.5em;
+  font-size: 1.1em;
+  font-weight: 700;
+  left: 50%;
+  margin: 0;
+  padding: 0.5em 1em;
+  position: absolute;
+  top: -1em;
+  transform: translateX(-50%);
+  width: 30%;
+}
+
+.easy {
+  background: springgreen;
+}
+
+.medium {
+  background: gold;
+}
+
+.hard {
+  background: orangered;
+}
+
+.btn-next {
+  border-radius: 1em;
+  bottom: -1em;
+  font-size: 1em;
+  padding: 2px 1.3em;
+  position: absolute;
+  transform: translateX(-50%);
+  transition: padding 1s;
+}
+
+.btn-next:hover {
+  padding: 2px 1.5em;
+}
+
+.timer p {
+  margin: 0;
+}
+
+.question-text {
+  font-size: 1.2em;
+}
+
+.answer-options {
+  display: grid;
+  gap: 10px 30px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.answer-options button {
+  background: white;
+  border-radius: 1.5em;
+  height: 2.5em;
+}
+
+.answer-options button:disabled {
+  background-color: #eee;
+  color: rgba(0, 0, 0, 0.6);
+}

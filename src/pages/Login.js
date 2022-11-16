@@ -6,6 +6,7 @@ import ConfigButton from '../components/ConfigButton';
 import getToken from '../services/tokenApi';
 import { addUsuario } from '../redux/actions';
 import './Login.css';
+import image from '../imgs/image.png';
 
 class Login extends Component {
   constructor() {
@@ -51,34 +52,38 @@ class Login extends Component {
     const { name, email } = this.state;
     const { history } = this.props;
     return (
-      <div className="login-container">
-        <input
-          type="text"
-          data-testid="input-player-name"
-          name="name"
-          value={ name }
-          placeholder="Qual é o seu nome?"
-          onChange={ this.onInputChange }
-        />
-        <input
-          type="text"
-          data-testid="input-gravatar-email"
-          name="email"
-          placeholder="Qual é o seu e-mail do gravatar?"
-          value={ email }
-          onChange={ this.onInputChange }
-
-        />
-        <button
-          data-testid="btn-play"
-          type="button"
-          disabled={ !this.buttonEnable() }
-          onClick={ this.startGame }
-        >
-          Play
-        </button>
-        <ConfigButton history={ history } />
-      </div>
+      <>
+        <img src={ image } alt="Logo Trivia" className="trivia-logo" />
+        <div className="login-container">
+          <input
+            type="text"
+            data-testid="input-player-name"
+            name="name"
+            value={ name }
+            placeholder="Qual é o seu nome?"
+            onChange={ this.onInputChange }
+          />
+          <input
+            type="text"
+            data-testid="input-gravatar-email"
+            name="email"
+            placeholder="Qual é o seu e-mail do gravatar?"
+            value={ email }
+            onChange={ this.onInputChange }
+          />
+          <div className="button-container">
+            <button
+              data-testid="btn-play"
+              type="button"
+              disabled={ !this.buttonEnable() }
+              onClick={ this.startGame }
+            >
+              Play
+            </button>
+            <ConfigButton history={ history } />
+          </div>
+        </div>
+      </>
     );
   }
 }
