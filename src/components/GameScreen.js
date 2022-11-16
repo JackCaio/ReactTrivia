@@ -68,9 +68,6 @@ class GameScreen extends Component {
     const hardMulti = 3;
     const mediumMulti = 2;
     switch (questions[number].difficulty) {
-    case 'easy':
-      pontos = timer;
-      break;
     case 'medium':
       pontos = timer * mediumMulti;
       break;
@@ -78,6 +75,7 @@ class GameScreen extends Component {
       pontos = timer * hardMulti;
       break;
     default:
+      pontos = timer;
       break;
     }
     dispatch(addPoints(pontos));

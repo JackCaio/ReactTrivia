@@ -1,5 +1,5 @@
 import { renderWithRouterAndRedux, preencheDados} from "./helpers/renderWithRouterAndRedux";
-import { screen, waitFor } from '@testing-library/react';
+import { screen, waitFor, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
 
@@ -10,6 +10,10 @@ const defaultName = 'nome genérico'
 const defaultEmail = 'teste@teste.com'
 
 describe('Testes relacionados á página de login', () => {
+beforeEach(() => {
+  jest.restoreAllMocks()
+  localStorage.clear();
+});
 
   test('Verifica se a aplicação renderiza o componente certo quando iniciado', () => {
     renderWithRouterAndRedux(<App />);
@@ -74,5 +78,12 @@ describe('Testes relacionados á página de login', () => {
     userEvent.click(btnPlay);
 
     await waitFor(() => expect(history.location.pathname).toBe('/game'), 1000)
+  });
+  test('Verifica se a página de login é renderizada caso não se faça o cadastro', async () => {
+    const { history } = renderWithRouterAndRedux(<App />);
+    act(() => {
+    history.push('/game');
+    });
+    await waitFor(() => screen.getByTestId('input-player-name'));
   });
 });
