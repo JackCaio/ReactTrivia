@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import md5 from 'crypto-js/md5';
 import { connect } from 'react-redux';
 import './Header.css';
+import starIcon from '../imgs/starIcon.svg';
 
 class Header extends Component {
   constructor() {
@@ -25,22 +26,29 @@ class Header extends Component {
     const { img } = this.state;
     return (
       <header>
-        <p>
+        {/* <div className="player-container"> */}
+        <div>
           <img
             src={ `https://www.gravatar.com/avatar/${img}` }
             alt="foto do jogador"
             data-testid="header-profile-picture"
           />
-          <span data-testid="header-player-name">{name}</span>
-          <span>
-            {'Score: '}
-            <span data-testid="header-score">{score}</span>
-            <span>Seu score foi de:</span>
-            <span data-testid="feedback-total-score">{score}</span>
-            <span>O número de perguntas corretas foi de:</span>
-            <span data-testid="feedback-total-question">{assertions}</span>
-          </span>
-        </p>
+          <p data-testid="header-player-name" className="player-name">{name}</p>
+        </div>
+        <div>
+          <img src={ starIcon } alt="Icone de estrela" className="starIcon" />
+          <div className="game-data">
+            <p>
+              {'Pontos: '}
+              <span data-testid="header-score">{score}</span>
+            </p>
+            <p>
+              <span>Acertos: </span>
+              <span data-testid="feedback-total-question">{assertions}</span>
+            </p>
+          </div>
+        </div>
+        {/* </div> */}
       </header>
     );
   }

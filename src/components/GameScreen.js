@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Timer from './Timer';
 import { addPoints, resetTimer } from '../redux/actions';
+import './GameScreen.css';
 
 class GameScreen extends Component {
   constructor() {
@@ -106,24 +107,27 @@ class GameScreen extends Component {
     const respostas = questions[number].answers;
 
     return (
-      <div>
-        {
-          timerRunning
-            ? <Timer timeOut={ this.timeOut } />
-            : <p>Tempo Esgotado!</p>
-
-        }
+      <div className="game-question">
         <p
           data-testid="question-category"
+          className={ `game-category ${questions[number].difficulty}` }
         >
           {questions[number].category}
         </p>
+        <div className="timer">
+          {
+            timerRunning
+              ? <Timer timeOut={ this.timeOut } />
+              : <p>Tempo Esgotado!</p>
+          }
+        </div>
         <p
           data-testid="question-text"
+          className="question-text"
         >
           {questions[number].question}
         </p>
-        <div data-testid="answer-options">
+        <div data-testid="answer-options" className="answer-options">
           {respostas.map(({ testId, question }, i) => {
             let style = {};
             if (selectedAnswer) {
@@ -146,6 +150,7 @@ class GameScreen extends Component {
         </div>
         {selectedAnswer && (
           <button
+            className="btn-next"
             type="button"
             data-testid="btn-next"
             onClick={ this.nextQuestion }

@@ -1,5 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import './Ranking.css';
+import image from '../imgs/image.png';
 
 class Ranking extends React.Component {
   constructor() {
@@ -25,26 +27,20 @@ class Ranking extends React.Component {
     const { ranking } = this.state;
 
     return (
-      <div>
+      <div className="ranking-container">
+        <img src={ image } alt="trivia game logo" className="logo" />
         <h1 data-testid="ranking-title">Ranking</h1>
-        <button
-          data-testid="btn-go-home"
-          type="button"
-          onClick={ this.backHome }
-        >
-          Início
-        </button>
         <section>
           <ol>
             {
               ranking.map((player, index) => (
                 <li key={ `i${index}` }>
                   <div>
-                    <img src={ `https://www.gravatar.com/avatar/${player.picture}` } alt="avatar" />
-                    <span data-testid={ `player-name-${index}` }>
+                    <img src={ `https://www.gravatar.com/avatar/${player.picture}` } alt="avatar" className="avatar" />
+                    <span data-testid={ `player-name-${index}` } className="player-name">
                       {`${player.name}`}
                     </span>
-                    <span data-testid={ `player-score-${index}` }>
+                    <span data-testid={ `player-score-${index}` } className="score">
                       {player.score}
                     </span>
                   </div>
@@ -53,6 +49,13 @@ class Ranking extends React.Component {
             }
           </ol>
         </section>
+        <button
+          data-testid="btn-go-home"
+          type="button"
+          onClick={ this.backHome }
+        >
+          Jogar Novamente
+        </button>
       </div>
     );
   }
