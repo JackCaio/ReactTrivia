@@ -1,5 +1,6 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { Provider } from 'react-redux';
@@ -24,4 +25,10 @@ export const renderWithRouterAndRedux = (component, initialState, route = '/') =
   };
 };
 
-export default renderWithRouterAndRedux;
+export const preencheDados = (nome, email) => {
+  const inputName = screen.getByTestId("input-player-name");
+  const inputEmail = screen.getByTestId("input-gravatar-email");
+
+  userEvent.type(inputName, nome);
+  userEvent.type(inputEmail, email);
+}
