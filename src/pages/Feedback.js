@@ -40,38 +40,40 @@ class Feedback extends Component {
     return (
       <div>
         <Header />
-        <section className="feedback-container">
-          <p>
-            {'Seu score foi de: '}
-            <span data-testid="feedback-total-score">{score}</span>
-          </p>
-          <h2
-            data-testid="feedback-text"
-            className={
-              assertions < acertosMinimos ? 'bad-result' : 'good-result'
-            }
-          >
-            {
-              assertions < acertosMinimos ? 'Could be better...' : 'Well Done!'
-            }
-          </h2>
-        </section>
-        <section className="buttons-container">
-          <button
-            data-testid="btn-play-again"
-            type="button"
-            onClick={ this.newGame }
-          >
-            Play Again
-          </button>
-          <button
-            type="button"
-            data-testid="btn-ranking"
-            onClick={ this.seeRanking }
-          >
-            Ranking
-          </button>
-        </section>
+        <div className="main-area">
+          <section className="feedback-container">
+            <p>
+              {'Seu score foi de: '}
+              <span data-testid="feedback-total-score">{score}</span>
+            </p>
+            <h2
+              data-testid="feedback-text"
+              className={
+                assertions < acertosMinimos ? 'bad-result' : 'good-result'
+              }
+            >
+              {
+                assertions < acertosMinimos ? 'Could be better...' : 'Well Done!'
+              }
+            </h2>
+          </section>
+          <section className="buttons-container">
+            <button
+              data-testid="btn-play-again"
+              type="button"
+              onClick={ this.newGame }
+            >
+              Play Again
+            </button>
+            <button
+              type="button"
+              data-testid="btn-ranking"
+              onClick={ this.seeRanking }
+            >
+              Ranking
+            </button>
+          </section>
+        </div>
       </div>
     );
   }

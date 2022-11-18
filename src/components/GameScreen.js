@@ -99,6 +99,14 @@ class GameScreen extends Component {
     });
   };
 
+  htmlDecode = (str) => {
+    const p = document.createElement('p');
+    p.innerHTML = str;
+    const txt = p.childNodes.length === 0 ? '' : p.childNodes[0].nodeValue;
+    p.remove();
+    return txt;
+  };
+
   render() {
     const { questions, number, loading, selectedAnswer, timerRunning } = this.state;
     if (loading) {
@@ -125,7 +133,7 @@ class GameScreen extends Component {
           data-testid="question-text"
           className="question-text"
         >
-          {questions[number].question}
+          {this.htmlDecode(questions[number].question)}
         </p>
         <div data-testid="answer-options" className="answer-options">
           {respostas.map(({ testId, question }, i) => {
@@ -143,7 +151,7 @@ class GameScreen extends Component {
                 onClick={ () => this.selectAnswer(testId) }
                 disabled={ !timerRunning }
               >
-                {question}
+                {this.htmlDecode(question)}
               </button>
             );
           })}
