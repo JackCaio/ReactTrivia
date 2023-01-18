@@ -82,7 +82,7 @@ beforeEach(() => {
   test('Verifica se a página de login é renderizada caso não se faça o cadastro', async () => {
     const { history } = renderWithRouterAndRedux(<App />);
     act(() => {
-    history.push('/game');
+    history.push('/ReactTrivia/game');
     });
     await waitFor(() => screen.getByTestId('input-player-name'));
   });

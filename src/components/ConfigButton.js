@@ -8,7 +8,7 @@ export default class ConfigButton extends Component {
       <button
         type="button"
         data-testid="btn-settings"
-        onClick={ () => history.push('/configs') }
+        onClick={ () => history.push('/ReactTrivia/configs') }
       >
         Config
       </button>

@@ -26,7 +26,7 @@ class GameScreen extends Component {
     const errorCode = 3;
     if (data.response_code === errorCode) {
       localStorage.removeItem('token');
-      history.push('/');
+      history.push('/ReactTrivia');
     }
     const questions = data.results.map((question) => {
       const answers = this
@@ -89,7 +89,7 @@ class GameScreen extends Component {
     const { number } = this.state;
     const lastQuestion = 4;
     if (number === lastQuestion) {
-      return history.push('/feedback');
+      return history.push('/ReactTrivia/feedback');
     }
     dispatch(resetTimer());
     this.setState({

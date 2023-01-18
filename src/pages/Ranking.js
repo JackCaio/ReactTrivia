@@ -20,7 +20,7 @@ class Ranking extends React.Component {
 
   backHome = () => {
     const { history } = this.props;
-    history.push('/');
+    history.push('/ReactTrivia');
   };
 
   render() {

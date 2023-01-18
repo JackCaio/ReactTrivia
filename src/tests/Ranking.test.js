@@ -90,7 +90,7 @@ describe('Testes relacionados à tela de ranking', () => {
   test('Verifica se o botão de inicio, renderiza o componente certo', () => {
     localStorage.setItem('ranking', JSON.stringify([{name: "Gabriel Dota Fujita", score: 87, picture: "ce11fce876c93ed5d2a72da660496473"}]))
     const { history } = renderWithRouterAndRedux(<App />, initialState);
-    act(() => history.push('/ranking'));
+    act(() => history.push('/ReactTrivia/ranking'));
     userEvent.click(screen.getByTestId('btn-go-home'));
     expect( screen.getByTestId('input-player-name'));
     expect(history.location.pathname).toBe('/')

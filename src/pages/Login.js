@@ -45,7 +45,7 @@ class Login extends Component {
     }
     localStorage.setItem('ranking', JSON.stringify([...oldRanking, obj]));
     dispatch(addUsuario(name, email));
-    history.push('/game');
+    history.push('/ReactTrivia/game');
   };
 
   render() {

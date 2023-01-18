@@ -36,7 +36,7 @@ describe("Testes relacionados à página de feedBack" , () => {
   });
   it("testa se ao clicar no botao de 'jogar novamente' o usuario é redirecionado para a pagina de jogo", async () => {
     const { history } =renderWithRouterAndRedux(<App />, initialState);
-      act(() => history.push('/feedback'));
+      act(() => history.push('/ReactTrivia/feedback'));
     localStorage.setItem('ranking', JSON.stringify([{name: "Gabriel Dota Fujita", score: 90, picture: "df69d894638aa1942aba0760dbe26f94"}]))
     const playAgain = screen.getByTestId(dataTestPlayAgain);
     userEvent.click(playAgain);
@@ -44,7 +44,7 @@ describe("Testes relacionados à página de feedBack" , () => {
   });
   it("testa se ao clicar no botao de 'ranking' o usuario é redirecionado para a pagina de ranking", () => {
     const { history } = renderWithRouterAndRedux(<App />, initialState);
-    act(() => history.push('/feedback'));
+    act(() => history.push('/ReactTrivia/feedback'));
     const ranking = screen.getByTestId(dataTestRanking);
     userEvent.click(ranking);
     expect(history.location.pathname).toBe( "/ranking" );
@@ -72,7 +72,7 @@ describe("testa a renderização do Header na pagina de feedback", () => {
 describe("testa o funcionamento dos botoes na pagina de feedback", () => {
   it("testa se ao clicar no botao de 'jogar novamente' o usuario é redirecionado para a pagina de jogo", () => {
      const { history } = renderWithRouterAndRedux(<App />, initialState);
-    act(() => history.push('/feedback'));
+    act(() => history.push('/ReactTrivia/feedback'));
 
     const playAgain = screen.getByTestId(dataTestPlayAgain);
     userEvent.click(playAgain);
@@ -80,7 +80,7 @@ describe("testa o funcionamento dos botoes na pagina de feedback", () => {
   });
   it("testa se ao clicar no botao de 'ranking' o usuario é redirecionado para a pagina de ranking", () => {
     const { history } = renderWithRouterAndRedux(<App />, initialState);
-    act(() => history.push('/feedback'));
+    act(() => history.push('/ReactTrivia/feedback'));
     const ranking = screen.getByTestId(dataTestRanking);
     userEvent.click(ranking);
     expect(history.location.pathname).toBe( "/ranking" );

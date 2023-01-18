@@ -23,7 +23,7 @@ class Feedback extends Component {
 
     const { history, dispatch } = this.props;
     dispatch(playAgain());
-    history.push('/');
+    history.push('/ReactTrivia');
   };
 
   seeRanking = () => {
@@ -31,7 +31,7 @@ class Feedback extends Component {
 
     const { history, dispatch } = this.props;
     dispatch(playAgain());
-    history.push('/ranking');
+    history.push('/ReactTrivia/ranking');
   };
 
   render() {
