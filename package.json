@@ -1,7 +1,7 @@
 {
   "name": "trivia-react-redux",
   "version": "0.1.0",
-  "homepage": "https://jackcaio.github.io/reacttrivia",
+  "homepage": "https://jackcaio.github.io/ReactTrivia",
   "private": true,
   "engines": {
     "node": "16"
