@@ -1,17 +1,18 @@
 # React Trivia
+> [Site Demo](hhtps://jackcaio.github.io/reacttrivia)
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/JackCaio/ReactTrivia)
 ![GitHub language count](https://img.shields.io/github/languages/count/JackCaio/ReactTrivia)
 
 <img src="preview.gif" alt="Preview Sistema"/>
 
-> Projeto feito durante módulo de Front-End do curso da [Trybe](https://www.google.com). Busca questões da API [Open Trivia Db](https://opentdb.com) e gera um leaderboard local.
+> Projeto feito durante módulo de Front-End do curso da [Trybe](https://www.google.com). Busca questões da API [Open Trivia DB](https://opentdb.com) e gera um leaderboard local.
 
 ### Ajustes e Melhorias
 
 Próximos passos no desenvolvimento do projeto.
 
-- [ ] Publicação de Demo em portfólio githubpages.
+- [x] Publicação de Demo em portfólio githubpages.
 - [ ] Implementação de Configurações para jogo.
 
 ## Usando
