@@ -1,5 +1,5 @@
 # React Trivia
-> [Site Demo](hhtps://jackcaio.github.io/reacttrivia)
+> [Site Demo](https://jackcaio.github.io/ReactTrivia/)
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/JackCaio/ReactTrivia)
 ![GitHub language count](https://img.shields.io/github/languages/count/JackCaio/ReactTrivia)
